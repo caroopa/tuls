@@ -15,8 +15,8 @@ abstract class Competidor(val categoria: Categoria) {
         return tulElegido
     }
 
-    fun tulesPorCategoria(): MutableList<Tul> = categoria.tules
-    fun superRandom(lista: MutableList<Tul>): Tul = lista.shuffled().random()
+    private fun tulesPorCategoria(): MutableList<Tul> = categoria.tules
+    private fun superRandom(lista: MutableList<Tul>): Tul = lista.shuffled().random()
 }
 
 class Rojo(categoria: Categoria) : Competidor(categoria) {
@@ -48,9 +48,9 @@ class Azul(categoria: Categoria) : Competidor(categoria) {
         }
     }
 
-    fun tieneMismaCategoria(contrincante: Competidor): Boolean =
+    private fun tieneMismaCategoria(contrincante: Competidor): Boolean =
         categoria == contrincante.categoria
-    fun tulContrincante(contrincante: Competidor): Tul = contrincante.tulQueLeToca(this)
+    private fun tulContrincante(contrincante: Competidor): Tul = contrincante.tulQueLeToca(this)
 }
 
 class Comun(categoria: Categoria): Competidor(categoria) {
