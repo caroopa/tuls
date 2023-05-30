@@ -18,6 +18,7 @@ import com.example.tuls.backend.Comun
 import com.example.tuls.backend.Options
 import com.example.tuls.backend.PrimeraDivision
 import com.example.tuls.backend.Rojo
+import com.example.tuls.backend.TercerDan
 
 class HomeFragment : Fragment() {
 
