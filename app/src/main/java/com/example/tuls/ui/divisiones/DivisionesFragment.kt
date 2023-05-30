@@ -1,4 +1,4 @@
-package com.example.tuls.ui.gallery
+package com.example.tuls.ui.divisiones
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -14,7 +14,7 @@ import com.example.tuls.backend.Comun
 import com.example.tuls.backend.SegundaDivision
 import com.example.tuls.backend.TerceraDivision
 
-class GalleryFragment : Fragment() {
+class DivisionesFragment : Fragment() {
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater,

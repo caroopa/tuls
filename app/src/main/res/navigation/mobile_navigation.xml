@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.example.tuls.ui.gallery.GalleryFragment"
+        android:name="com.example.tuls.ui.divisiones.DivisionesFragment"
         android:label="@string/segunda_tercera_division"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.example.tuls.ui.slideshow.SlideshowFragment"
+        android:name="com.example.tuls.ui.torneos.TorneosFragment"
         android:label="@string/torneo"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>

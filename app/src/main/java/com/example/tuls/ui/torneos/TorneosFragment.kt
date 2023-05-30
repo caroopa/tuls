@@ -1,4 +1,4 @@
-package com.example.tuls.ui.slideshow
+package com.example.tuls.ui.torneos
 
 import android.annotation.SuppressLint
 import android.graphics.Color
@@ -18,7 +18,7 @@ import com.example.tuls.backend.Azul
 import com.example.tuls.backend.Options
 import com.example.tuls.backend.Rojo
 
-class SlideshowFragment : Fragment() {
+class TorneosFragment : Fragment() {
     lateinit var spinner: Spinner
     val options = Options.gradosNombres
 
@@ -77,10 +77,6 @@ class SlideshowFragment : Fragment() {
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                Toast.makeText(context, "Seleccioná algo estúpido", Toast.LENGTH_SHORT).show()
             }
         }
     }
