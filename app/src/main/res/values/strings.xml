@@ -7,7 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="primera_division">Primera división</string>
-    <string name="segunda_tercera_division">Segunda y tercera división</string>
+    <string name="primera_division">Primera División</string>
+    <string name="segunda_tercera_division">Segunda y Tercera División</string>
     <string name="torneo">Torneos</string>
 </resources>

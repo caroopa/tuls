@@ -18,21 +18,11 @@ import com.example.tuls.backend.Comun
 import com.example.tuls.backend.Options
 import com.example.tuls.backend.PrimeraDivision
 import com.example.tuls.backend.Rojo
-import com.example.tuls.backend.TercerDan
 
 class HomeFragment : Fragment() {
-
-    //    private var _binding: FragmentHomeBinding? = null
-//
-//    // This property is only valid between onCreateView and
-//    // onDestroyView.
-//    private val binding get() = _binding!!
     private lateinit var spinnerRojo: Spinner
     private lateinit var spinnerAzul: Spinner
-    private lateinit var button: Button
     val options = Options.gradosNombres
-//    private lateinit var valorRojo: String
-//    private lateinit var valorAzul: String
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,17 +30,9 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val rootView = inflater.inflate(R.layout.fragment_home, container, false)
-
-        val tituloSpinnerRojo = rootView.findViewById<TextView>(R.id.tituloSpinnerRojo)
-        tituloSpinnerRojo.text = "Rojo"
-        spinnerRojo = rootView.findViewById(R.id.spinnerRojo)
-
-        val tituloSpinnerAzul = rootView.findViewById<TextView>(R.id.tituloSpinnerAzul)
-        tituloSpinnerAzul.text = "Azul"
-        spinnerAzul = rootView.findViewById(R.id.spinnerAzul)
-
-        button = rootView.findViewById(R.id.button)
-
+        spinnerRojo = rootView.findViewById<Spinner>(R.id.spinnerRojo)
+        spinnerAzul = rootView.findViewById<Spinner>(R.id.spinnerAzul)
+        val button = rootView.findViewById<Button>(R.id.button)
         val eleccionComun = rootView.findViewById<TextView>(R.id.eleccionComun)
         val eleccionRojo = rootView.findViewById<TextView>(R.id.eleccionRojo)
         val eleccionAzul = rootView.findViewById<TextView>(R.id.eleccionAzul)
@@ -67,10 +49,10 @@ class HomeFragment : Fragment() {
                 val tul = comun.tulQueLeToca().nombre
                 eleccionComun.text = tul
 
-                val tercerDanAzul = Azul(Options.grados.find { it.nombre == options[valorAzul] }!!)
-                val tercerDanRojo = Rojo(Options.grados.find { it.nombre == options[valorRojo] }!!)
-                val tulAzul = tercerDanAzul.tulQueLeToca(tercerDanRojo).nombre
-                val tulRojo = tercerDanRojo.tulQueLeToca(tercerDanAzul).nombre
+                val jugadorAzul = Azul(Options.grados.find { it.nombre == options[valorAzul] }!!)
+                val jugadorRojo = Rojo(Options.grados.find { it.nombre == options[valorRojo] }!!)
+                val tulAzul = jugadorAzul.tulQueLeToca(jugadorRojo).nombre
+                val tulRojo = jugadorRojo.tulQueLeToca(jugadorAzul).nombre
                 eleccionRojo.text = tulRojo
                 eleccionAzul.text = tulAzul
             }
@@ -79,12 +61,7 @@ class HomeFragment : Fragment() {
         return rootView
     }
 
-//    override fun onDestroyView() {
-//        super.onDestroyView()
-//        _binding = null
-//    }
-
-    fun spinner() {
+    private fun spinner() {
         val nonSelectablePosition = 0
 
         val adapter = object : ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_item, options) {

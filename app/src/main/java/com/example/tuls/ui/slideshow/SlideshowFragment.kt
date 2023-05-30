@@ -1,42 +1,87 @@
 package com.example.tuls.ui.slideshow
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.tuls.databinding.FragmentSlideshowBinding
+import com.example.tuls.R
+import com.example.tuls.backend.Azul
+import com.example.tuls.backend.Options
+import com.example.tuls.backend.Rojo
 
 class SlideshowFragment : Fragment() {
+    lateinit var spinner: Spinner
+    val options = Options.gradosNombres
 
-    private var _binding: FragmentSlideshowBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val slideshowViewModel =
-            ViewModelProvider(this).get(SlideshowViewModel::class.java)
+        val rootView = inflater.inflate(R.layout.fragment_slideshow, container, false)
+        spinner = rootView.findViewById<Spinner>(R.id.spinnerTorneo)
+        val button = rootView.findViewById<Button>(R.id.buttonTorneo)
+        val eleccion = rootView.findViewById<TextView>(R.id.eleccionComunTorneo)
 
-        _binding = FragmentSlideshowBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        spinner()
 
-        val textView: TextView = binding.textSlideshow
-        slideshowViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        button.setOnClickListener {
+            val valor = spinner.selectedItemPosition
+            if(valor == 0) {
+                Toast.makeText(context, "Seleccione una opción", Toast.LENGTH_SHORT).show()
+            } else {
+                val jugadorAzul = Azul(Options.grados.find { it.nombre == options[valor] }!!)
+                val jugadorRojo = Rojo(Options.grados.find { it.nombre == options[valor] }!!)
+                val tulAzul = jugadorAzul.tulQueLeToca(jugadorRojo).nombre
+                val tulRojo = jugadorRojo.tulQueLeToca(jugadorAzul).nombre
+                eleccion.text = tulRojo
+            }
         }
-        return root
+
+        return rootView
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun spinner() {
+        val nonSelectablePosition = 0
+
+        val adapter = object : ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_item, options) {
+            override fun isEnabled(position: Int): Boolean {
+                // Si es la posición del elemento no seleccionable, devolver falso
+                return position != nonSelectablePosition
+            }
+
+            override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+                val view = super.getDropDownView(position, convertView, parent)
+                val textView = view as TextView
+                // Si es la posición del elemento no seleccionable, establecer el color de texto en gris claro
+                if (position == nonSelectablePosition) {
+                    textView.setTextColor(Color.GRAY)
+                } else {
+                    textView.setTextColor(Color.BLACK)
+                }
+                return view
+            }
+        }
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                Toast.makeText(context, "Seleccioná algo estúpido", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }
