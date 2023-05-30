@@ -22,7 +22,7 @@ import com.example.tuls.backend.TercerDan
 
 class HomeFragment : Fragment() {
 
-//    private var _binding: FragmentHomeBinding? = null
+    //    private var _binding: FragmentHomeBinding? = null
 //
 //    // This property is only valid between onCreateView and
 //    // onDestroyView.
