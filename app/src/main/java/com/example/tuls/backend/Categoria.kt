@@ -87,6 +87,16 @@ object TerceraDivision : Categoria(
 )
 
 object Options {
-    val grados = listOf<String>("Selecciona una opción", PrimerDan.nombre, SegundoDan.nombre, TercerDan.nombre, CuartoDan.nombre, QuintoDan.nombre, SextoDan.nombre)
-    val divisiones = listOf<String>(PrimeraDivision.nombre, SegundaDivision.nombre, TerceraDivision.nombre)
+    val gradosNombres = listOf<String>(
+        "Seleccione una opción",
+        PrimerDan.nombre,
+        SegundoDan.nombre,
+        TercerDan.nombre,
+        CuartoDan.nombre,
+        QuintoDan.nombre,
+        SextoDan.nombre,
+    )
+    val grados = listOf<Categoria>(PrimerDan, SegundoDan, TercerDan, CuartoDan, QuintoDan, SextoDan)
+    val divisiones =
+        listOf<String>(PrimeraDivision.nombre, SegundaDivision.nombre, TerceraDivision.nombre)
 }
