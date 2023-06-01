@@ -21,7 +21,7 @@ class DivisionesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val rootView = inflater.inflate(R.layout.fragment_gallery, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_divisiones, container, false)
         val eleccion = rootView.findViewById<TextView>(R.id.eleccionComunDivisiones)
         val button = rootView.findViewById<Button>(R.id.buttonDivisiones)
         val radioGroup = rootView.findViewById<RadioGroup>(R.id.radioGroup)

@@ -23,7 +23,7 @@ import com.example.tuls.backend.Rojo
 class HomeFragment : Fragment() {
     private lateinit var spinnerRojo: Spinner
     private lateinit var spinnerAzul: Spinner
-    val options = Options.gradosNombres
+    private val options = Options.gradosNombres
 
     override fun onCreateView(
         inflater: LayoutInflater,

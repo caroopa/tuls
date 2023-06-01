@@ -29,8 +29,6 @@ object CustomSpinner {
                 val textView = view as TextView
                 if (position == nonSelectablePosition) {
                     textView.setTextColor(Color.GRAY)
-                } else {
-                    textView.setTextColor(Color.BLACK)
                 }
                 return view
             }
