@@ -12,6 +12,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:text">@color/font_light</item>
+        <item name="font_azul">@color/font_azul_light</item>
     </style>
 
     <style name="Theme.Tuls.NoActionBar">
@@ -22,9 +24,4 @@
     <style name="Theme.Tuls.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Tuls.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-    <style name="SpinnerStyle">
-        <item name="android:background">@drawable/spinner_background</item>
-        <item name="android:popupBackground">@color/colorPrimary</item>
-    </style>
 </resources>
