@@ -76,8 +76,6 @@ class HomeFragment : Fragment() {
                 // Si es la posición del elemento no seleccionable, establecer el color de texto en gris claro
                 if (position == nonSelectablePosition) {
                     textView.setTextColor(Color.GRAY)
-                } else {
-                    textView.setTextColor(Color.BLACK)
                 }
                 return view
             }
